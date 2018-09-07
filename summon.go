@@ -3,69 +3,60 @@ package summon
 import (
 	"errors"
 	"os"
-	"strings"
 	"sync"
 
 	"github.com/spf13/cast"
 )
 
-// Summon Summon
-type Summon struct{}
+// env Env data
+type env struct {
+	Key, Val string
+}
 
 var (
 	// Local Lcal key and value
-	Local = struct {
-		Key, Val string
-	}{"ENV", "LOCAL"}
-	once    sync.Once
-	isLocal = false
-	vals    = map[string]interface{}{}
+	Local       = &env{"ENV", "LOCAL"}
+	once        sync.Once
+	isLocal     = false
+	isInitialed = false
+	vals        = map[string]interface{}{}
 )
 
-// New New Summon
-func New() *Summon {
-	return &Summon{}
-}
-
-// Init Make sure execute init first
+// Init Make sure execute init first before Get____(k string)
 func Init() {
 	once.Do(func() {
 		if e := os.Getenv(Local.Key); e == "" || e == Local.Val {
 			isLocal = true
 		}
+		isInitialed = true
 	})
 }
 
-func getEnv(k string) (string, error) {
-	s := os.Getenv(k)
-
-	if s == "" {
-		return "", errors.New(`env "` + k + `" is not exist`)
+func getEnv(k string) string {
+	if s := os.Getenv(k); s != "" {
+		return s
 	}
-
-	return s, nil
+	panic(`env "` + k + `" is not exist`)
 }
 
 // Inject Get a string value from paramer or env and save in map vals
 func Inject(k string, localVal interface{}) {
-	upper := strings.ToUpper(k)
 	if isLocal {
-		vals[upper] = localVal
+		vals[k] = localVal
 	}
 
-	v, err := getEnv(upper)
-
-	if err != nil {
-		panic(err.Error())
-	}
-
-	vals[upper] = v
+	vals[k] = getEnv(k)
 }
 
 // GetString Get string value from map vals
 func GetString(k string) (string, error) {
-	if s, ok := vals[strings.ToUpper(k)]; ok {
+	if !isInitialed {
+		return "", errors.New("summon has not ready yet")
+	}
+
+	if s, ok := vals[k]; ok {
 		return cast.ToStringE(s)
 	}
+
 	return "", errors.New(`env "` + k + `" is not injected`)
 }
