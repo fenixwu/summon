@@ -1,0 +1,6 @@
+hash: 6d63d4520360e963cc95230a872d180ab73da6fbcf11cd69179797f8fce2eea5
+updated: 2018-09-07T00:05:27.538947+08:00
+imports:
+- name: github.com/spf13/cast
+  version: 8965335b8c7107321228e3e3702cab9832751bac
+testImports: []

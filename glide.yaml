@@ -1,0 +1,4 @@
+package: summon
+import:
+- package: github.com/spf13/cast
+  version: ^1.2.0
