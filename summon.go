@@ -48,12 +48,12 @@ func (s *Summoner) Inject(k string, localVal interface{}) {
 }
 
 // Get a value from map.
-func (s *Summoner) Get(k string) *someEnv {
+func (s *Summoner) Get(k string) *SomeEnv {
 	if v, ok := vals[k]; ok {
-		return &someEnv{k, v}
+		return &SomeEnv{k, v}
 	}
 
-	return &someEnv{k, nil}
+	return &SomeEnv{k, nil}
 }
 
 // Get value by using "os.Getenv(key string)".
