@@ -2,44 +2,37 @@ package summon
 
 import (
 	"os"
-	"sync"
 )
 
 var (
-	// env is environment variable's Key.
-	env = "ENV"
-	// envLocal Local environment's value.
-	local   = "local"
-	once    sync.Once
-	isLocal = false
-	vals    = map[string]interface{}{}
+	env, local = "ENV", "local"
+	vals       = map[string]interface{}{}
 )
 
 type Summoner struct {
-	isLocal bool
+	isEnvLocal bool
 }
 
 // New a "Summoner" and set "isLocal" once.
-func New() *Summoner {
-	once.Do(func() {
-		if e := os.Getenv(env); e == "" || e == local {
-			isLocal = true
-		}
-	})
+func New(env string) *Summoner {
+	isLocal := false
+	if env == "" || env == local {
+		isLocal = true
+	}
 
 	return &Summoner{
-		isLocal: isLocal,
+		isEnvLocal: isLocal,
 	}
 }
 
 // IsLocalEnv tells that is program running locally.
 func (s *Summoner) IsLocalEnv() bool {
-	return s.isLocal
+	return s.isEnvLocal
 }
 
 // Inject value from local or OS into map.
 func (s *Summoner) Inject(k string, localVal interface{}) {
-	if isLocal {
+	if s.isEnvLocal {
 		vals[k] = localVal
 		return
 	}
