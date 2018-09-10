@@ -1,21 +1,34 @@
 # Summon
 [![GoDoc](https://godoc.org/github.com/go-redis/redis?status.svg)](https://godoc.org/github.com/fenixwu/summon)
 
-Summon makes using envirenvironment variables safely.
+Summon makes using environment variables safely.
 
 ## Quickstart
 ```go
 sm := summon.New(os.Getenv("ENV"))
-// Inject will valid variable is exist first.
-// If not, it should have panic, for example, run go like this "ENV=release go run main.go".
 sm.Inject("AUTH_KEY", "token_for_local")
 token , err := sm.Get("AUTH_KEY").ToString()
+```
 
-if err != nil {
-  return
-}
+## Simulation
+### ENV=local go run main.go/go run main.go
+```go
+sm := summon.New(os.Getenv("ENV"))
+sm.Inject("AUTH_KEY", "token_for_local") // Insert "ENV":"token_for_local" into map.
+token , err := sm.Get("AUTH_KEY").ToString() // "token_for_local", nil
+```
 
-// token will be "token_for_local" when using `go run main.go` or `ENV=local go run main.go`.
-// token will be "aaa" when using `ENV=release AUTH_KEY="aaa" go run main.go`.
-fmt.Println(token)
+### ENV=release go run main.go
+```go
+sm := summon.New(os.Getenv("ENV"))
+sm.Inject("AUTH_KEY", "token_for_local") // panic
+// Try getting a null key
+token , err := sm.Get("TOKEN").ToString() // return "", error:`"TOKEN" s not injected yet`
+```
+
+### ENV=release AUTH_KEY=aaa go run main.go
+```go
+sm := summon.New(os.Getenv("ENV"))
+sm.Inject("AUTH_KEY", "token_for_local") // Insert "ENV":"aaa" into map.
+token , err := sm.Get("AUTH_KEY").ToString() // "aaa", nil
 ```
