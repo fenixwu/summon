@@ -8,13 +8,13 @@ import (
 	"github.com/spf13/cast"
 )
 
-type SomeEnv struct {
+type someEnv struct {
 	key string
 	val interface{}
 }
 
 // ToTime parse value to time type.
-func (s *SomeEnv) ToTime() (tim time.Time, err error) {
+func (s *someEnv) ToTime() (tim time.Time, err error) {
 	if s.val == nil {
 		err = s.notInjectedYetError()
 		return
@@ -24,7 +24,7 @@ func (s *SomeEnv) ToTime() (tim time.Time, err error) {
 }
 
 // ToDuration parse value to duration type.
-func (s *SomeEnv) ToDuration() (d time.Duration, err error) {
+func (s *someEnv) ToDuration() (d time.Duration, err error) {
 	if s.val == nil {
 		err = s.notInjectedYetError()
 		return
@@ -34,7 +34,7 @@ func (s *SomeEnv) ToDuration() (d time.Duration, err error) {
 }
 
 // ToBool parse value to bool type.
-func (s *SomeEnv) ToBool() (bool, error) {
+func (s *someEnv) ToBool() (bool, error) {
 	if s.val == nil {
 		return false, s.notInjectedYetError()
 	}
@@ -42,7 +42,7 @@ func (s *SomeEnv) ToBool() (bool, error) {
 }
 
 // ToFloat64 parse value to float64 type.
-func (s *SomeEnv) ToFloat64() (float64, error) {
+func (s *someEnv) ToFloat64() (float64, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -50,7 +50,7 @@ func (s *SomeEnv) ToFloat64() (float64, error) {
 }
 
 // ToFloat32 parse value to float32 type.
-func (s *SomeEnv) ToFloat32() (float32, error) {
+func (s *someEnv) ToFloat32() (float32, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -58,7 +58,7 @@ func (s *SomeEnv) ToFloat32() (float32, error) {
 }
 
 // ToInt64 parse value to int64 type.
-func (s *SomeEnv) ToInt64() (int64, error) {
+func (s *someEnv) ToInt64() (int64, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -66,7 +66,7 @@ func (s *SomeEnv) ToInt64() (int64, error) {
 }
 
 // ToInt32 parse value to int32 type.
-func (s *SomeEnv) ToInt32() (int32, error) {
+func (s *someEnv) ToInt32() (int32, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -74,7 +74,7 @@ func (s *SomeEnv) ToInt32() (int32, error) {
 }
 
 // ToInt16 parse value to int16 type.
-func (s *SomeEnv) ToInt16() (int16, error) {
+func (s *someEnv) ToInt16() (int16, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -82,7 +82,7 @@ func (s *SomeEnv) ToInt16() (int16, error) {
 }
 
 // ToInt8 parse value to int8 type.
-func (s *SomeEnv) ToInt8() (int8, error) {
+func (s *someEnv) ToInt8() (int8, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -90,7 +90,7 @@ func (s *SomeEnv) ToInt8() (int8, error) {
 }
 
 // ToInt parse value to int type.
-func (s *SomeEnv) ToInt() (int, error) {
+func (s *someEnv) ToInt() (int, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -98,7 +98,7 @@ func (s *SomeEnv) ToInt() (int, error) {
 }
 
 // ToUint parse value to uint type.
-func (s *SomeEnv) ToUint() (uint, error) {
+func (s *someEnv) ToUint() (uint, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -106,7 +106,7 @@ func (s *SomeEnv) ToUint() (uint, error) {
 }
 
 // ToUint64 parse value to uint64 type.
-func (s *SomeEnv) ToUint64() (uint64, error) {
+func (s *someEnv) ToUint64() (uint64, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -114,7 +114,7 @@ func (s *SomeEnv) ToUint64() (uint64, error) {
 }
 
 // ToUint32 parse value to uint32 type.
-func (s *SomeEnv) ToUint32() (uint32, error) {
+func (s *someEnv) ToUint32() (uint32, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -122,7 +122,7 @@ func (s *SomeEnv) ToUint32() (uint32, error) {
 }
 
 // ToUint16 parse value to uint16 type.
-func (s *SomeEnv) ToUint16() (uint16, error) {
+func (s *someEnv) ToUint16() (uint16, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -130,7 +130,7 @@ func (s *SomeEnv) ToUint16() (uint16, error) {
 }
 
 // ToUint8 parse value to uint8 type.
-func (s *SomeEnv) ToUint8() (uint8, error) {
+func (s *someEnv) ToUint8() (uint8, error) {
 	if s.val == nil {
 		return 0, s.notInjectedYetError()
 	}
@@ -138,7 +138,7 @@ func (s *SomeEnv) ToUint8() (uint8, error) {
 }
 
 // ToString parse value to string type.
-func (s *SomeEnv) ToString() (string, error) {
+func (s *someEnv) ToString() (string, error) {
 	if s.val == nil {
 		return "", s.notInjectedYetError()
 	}
@@ -146,7 +146,7 @@ func (s *SomeEnv) ToString() (string, error) {
 }
 
 // ToStringMapString parse value to map[string]string type.
-func (s *SomeEnv) ToStringMapString() (map[string]string, error) {
+func (s *someEnv) ToStringMapString() (map[string]string, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -154,7 +154,7 @@ func (s *SomeEnv) ToStringMapString() (map[string]string, error) {
 }
 
 // ToStringMapStringSlice parse value to map[string][]string type.
-func (s *SomeEnv) ToStringMapStringSlice() (map[string][]string, error) {
+func (s *someEnv) ToStringMapStringSlice() (map[string][]string, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -162,7 +162,7 @@ func (s *SomeEnv) ToStringMapStringSlice() (map[string][]string, error) {
 }
 
 // ToStringMapBool parse value to map[string]bool type.
-func (s *SomeEnv) ToStringMapBool() (map[string]bool, error) {
+func (s *someEnv) ToStringMapBool() (map[string]bool, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -170,7 +170,7 @@ func (s *SomeEnv) ToStringMapBool() (map[string]bool, error) {
 }
 
 // ToStringMap parse value to map[string]interface{} type.
-func (s *SomeEnv) ToStringMap() (map[string]interface{}, error) {
+func (s *someEnv) ToStringMap() (map[string]interface{}, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -178,7 +178,7 @@ func (s *SomeEnv) ToStringMap() (map[string]interface{}, error) {
 }
 
 // ToSlice parse value to slice type.
-func (s *SomeEnv) ToSlice() ([]interface{}, error) {
+func (s *someEnv) ToSlice() ([]interface{}, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -186,7 +186,7 @@ func (s *SomeEnv) ToSlice() ([]interface{}, error) {
 }
 
 // ToBoolSlice parse value to bool slice type.
-func (s *SomeEnv) ToBoolSlice() ([]bool, error) {
+func (s *someEnv) ToBoolSlice() ([]bool, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -194,7 +194,7 @@ func (s *SomeEnv) ToBoolSlice() ([]bool, error) {
 }
 
 // ToStringSlice parse value to string slice type.
-func (s *SomeEnv) ToStringSlice() ([]string, error) {
+func (s *someEnv) ToStringSlice() ([]string, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -202,7 +202,7 @@ func (s *SomeEnv) ToStringSlice() ([]string, error) {
 }
 
 // ToIntSlice parse value to int slice type.
-func (s *SomeEnv) ToIntSlice() ([]int, error) {
+func (s *someEnv) ToIntSlice() ([]int, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
@@ -210,14 +210,14 @@ func (s *SomeEnv) ToIntSlice() ([]int, error) {
 }
 
 // ToDurationSlice parse value to duration slice type.
-func (s *SomeEnv) ToDurationSlice() ([]time.Duration, error) {
+func (s *someEnv) ToDurationSlice() ([]time.Duration, error) {
 	if s.val == nil {
 		return nil, s.notInjectedYetError()
 	}
 	return cast.ToDurationSliceE(s.val)
 }
 
-func (s *SomeEnv) notInjectedYetError() error {
+func (s *someEnv) notInjectedYetError() error {
 	var e strings.Builder
 	e.WriteString(`"`)
 	e.WriteString(s.key)

@@ -11,13 +11,13 @@ func TestSomeEnv_ToTime(t *testing.T) {
 	now := time.Now()
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		wantTim time.Time
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_TIME_A", now}, now, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_TIME_B", "now"}, def, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_TIME_C", nil}, def, true},
+		{"Test return correctly", &someEnv{"TEST_TO_TIME_A", now}, now, false},
+		{"Test return cast error", &someEnv{"TEST_TO_TIME_B", "now"}, def, true},
+		{"Test return nil error", &someEnv{"TEST_TO_TIME_C", nil}, def, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -37,13 +37,13 @@ func TestSomeEnv_ToDuration(t *testing.T) {
 	var def time.Duration
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		wantD   time.Duration
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_DURATION_A", 1 * time.Second}, 1 * time.Second, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_DURATION_B", "now"}, def, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_DURATION_C", nil}, def, true},
+		{"Test return correctly", &someEnv{"TEST_TO_DURATION_A", 1 * time.Second}, 1 * time.Second, false},
+		{"Test return cast error", &someEnv{"TEST_TO_DURATION_B", "now"}, def, true},
+		{"Test return nil error", &someEnv{"TEST_TO_DURATION_C", nil}, def, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -62,13 +62,13 @@ func TestSomeEnv_ToDuration(t *testing.T) {
 func TestSomeEnv_ToBool(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    bool
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_BOOL_A", "true"}, true, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_BOOL_B", "a"}, false, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_BOOL_C", nil}, false, true},
+		{"Test return correctly", &someEnv{"TEST_TO_BOOL_A", "true"}, true, false},
+		{"Test return cast error", &someEnv{"TEST_TO_BOOL_B", "a"}, false, true},
+		{"Test return nil error", &someEnv{"TEST_TO_BOOL_C", nil}, false, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -87,13 +87,13 @@ func TestSomeEnv_ToBool(t *testing.T) {
 func TestSomeEnv_ToFloat64(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    float64
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_FLOAT64_A", 1.1}, 1.1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_FLOAT64_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_FLOAT64_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_FLOAT64_A", 1.1}, 1.1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_FLOAT64_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_FLOAT64_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -112,13 +112,13 @@ func TestSomeEnv_ToFloat64(t *testing.T) {
 func TestSomeEnv_ToFloat32(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    float32
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_FLOAT32_A", 1.1}, 1.1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_FLOAT32_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_FLOAT32_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_FLOAT32_A", 1.1}, 1.1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_FLOAT32_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_FLOAT32_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -137,13 +137,13 @@ func TestSomeEnv_ToFloat32(t *testing.T) {
 func TestSomeEnv_ToInt64(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    int64
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_INT64_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_INT64_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_INT64_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_INT64_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_INT64_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_INT64_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -162,13 +162,13 @@ func TestSomeEnv_ToInt64(t *testing.T) {
 func TestSomeEnv_ToInt32(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    int32
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_INT32_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_INT32_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_INT32_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_INT32_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_INT32_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_INT32_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -187,13 +187,13 @@ func TestSomeEnv_ToInt32(t *testing.T) {
 func TestSomeEnv_ToInt16(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    int16
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_INT16_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_INT16_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_INT16_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_INT16_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_INT16_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_INT16_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -212,13 +212,13 @@ func TestSomeEnv_ToInt16(t *testing.T) {
 func TestSomeEnv_ToInt8(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    int8
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_INT8_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_INT8_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_INT8_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_INT8_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_INT8_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_INT8_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -237,13 +237,13 @@ func TestSomeEnv_ToInt8(t *testing.T) {
 func TestSomeEnv_ToInt(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    int
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_INT_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_INT_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_INT_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_INT_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_INT_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_INT_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -262,13 +262,13 @@ func TestSomeEnv_ToInt(t *testing.T) {
 func TestSomeEnv_ToUint(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    uint
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_UINT_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_UINT_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_UINT_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_UINT_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_UINT_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_UINT_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -287,13 +287,13 @@ func TestSomeEnv_ToUint(t *testing.T) {
 func TestSomeEnv_ToUint64(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    uint64
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_UINT64_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_UINT64_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_UINT64_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_UINT64_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_UINT64_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_UINT64_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -312,13 +312,13 @@ func TestSomeEnv_ToUint64(t *testing.T) {
 func TestSomeEnv_ToUint32(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    uint32
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_UINT32_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_UINT32_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_UINT32_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_UINT32_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_UINT32_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_UINT32_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -337,13 +337,13 @@ func TestSomeEnv_ToUint32(t *testing.T) {
 func TestSomeEnv_ToUint16(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    uint16
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_UINT16_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_UINT16_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_UINT16_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_UINT16_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_UINT16_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_UINT16_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -362,13 +362,13 @@ func TestSomeEnv_ToUint16(t *testing.T) {
 func TestSomeEnv_ToUint8(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    uint8
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_UINT8_A", 1}, 1, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_UINT8_B", "a"}, 0, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_UINT8_C", nil}, 0, true},
+		{"Test return correctly", &someEnv{"TEST_TO_UINT8_A", 1}, 1, false},
+		{"Test return cast error", &someEnv{"TEST_TO_UINT8_B", "a"}, 0, true},
+		{"Test return nil error", &someEnv{"TEST_TO_UINT8_C", nil}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -387,13 +387,13 @@ func TestSomeEnv_ToUint8(t *testing.T) {
 func TestSomeEnv_ToString(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    string
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_STRING_A", 1}, "1", false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_STRING_B", &Summoner{}}, "", true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_STRING_C", nil}, "", true},
+		{"Test return correctly", &someEnv{"TEST_TO_STRING_A", 1}, "1", false},
+		{"Test return cast error", &someEnv{"TEST_TO_STRING_B", &Summoner{}}, "", true},
+		{"Test return nil error", &someEnv{"TEST_TO_STRING_C", nil}, "", true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -412,13 +412,13 @@ func TestSomeEnv_ToString(t *testing.T) {
 func TestSomeEnv_ToStringMapString(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    map[string]string
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_STRING_MAP_STRING_A", map[string]string{"test": "a"}}, map[string]string{"test": "a"}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_STRING_MAP_STRING_B", ""}, map[string]string{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_STRING_MAP_STRING_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_STRING_MAP_STRING_A", map[string]string{"test": "a"}}, map[string]string{"test": "a"}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_STRING_MAP_STRING_B", ""}, map[string]string{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_STRING_MAP_STRING_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -437,13 +437,13 @@ func TestSomeEnv_ToStringMapString(t *testing.T) {
 func TestSomeEnv_ToStringMapStringSlice(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    map[string][]string
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_STRING_MAP_STRING_SLICE_A", map[string][]string{"test": []string{"a"}}}, map[string][]string{"test": []string{"a"}}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_STRING_MAP_STRING_SLICE_B", ""}, map[string][]string{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_STRING_MAP_STRING_SLICE_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_STRING_MAP_STRING_SLICE_A", map[string][]string{"test": []string{"a"}}}, map[string][]string{"test": []string{"a"}}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_STRING_MAP_STRING_SLICE_B", ""}, map[string][]string{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_STRING_MAP_STRING_SLICE_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -462,13 +462,13 @@ func TestSomeEnv_ToStringMapStringSlice(t *testing.T) {
 func TestSomeEnv_ToStringMapBool(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    map[string]bool
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_STRING_MAP_BOOL_A", map[string]bool{"test": true}}, map[string]bool{"test": true}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_STRING_MAP_BOOL_B", ""}, map[string]bool{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_STRING_MAP_BOOL_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_STRING_MAP_BOOL_A", map[string]bool{"test": true}}, map[string]bool{"test": true}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_STRING_MAP_BOOL_B", ""}, map[string]bool{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_STRING_MAP_BOOL_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -487,13 +487,13 @@ func TestSomeEnv_ToStringMapBool(t *testing.T) {
 func TestSomeEnv_ToStringMap(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    map[string]interface{}
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_STRING_MAP_A", map[string]interface{}{"test": "t"}}, map[string]interface{}{"test": "t"}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_STRING_MAP_B", ""}, map[string]interface{}{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_STRING_MAP_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_STRING_MAP_A", map[string]interface{}{"test": "t"}}, map[string]interface{}{"test": "t"}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_STRING_MAP_B", ""}, map[string]interface{}{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_STRING_MAP_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -512,13 +512,13 @@ func TestSomeEnv_ToStringMap(t *testing.T) {
 func TestSomeEnv_ToSlice(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    []interface{}
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_SLICE_A", []interface{}{1, 3}}, []interface{}{1, 3}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_SLICE_B", ""}, nil, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_SLICE_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_SLICE_A", []interface{}{1, 3}}, []interface{}{1, 3}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_SLICE_B", ""}, nil, true},
+		{"Test return nil error", &someEnv{"TEST_TO_SLICE_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -537,13 +537,13 @@ func TestSomeEnv_ToSlice(t *testing.T) {
 func TestSomeEnv_ToBoolSlice(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    []bool
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_BOOL_SLICE_A", []bool{true, false}}, []bool{true, false}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_BOOL_SLICE_B", ""}, []bool{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_BOOL_SLICE_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_BOOL_SLICE_A", []bool{true, false}}, []bool{true, false}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_BOOL_SLICE_B", ""}, []bool{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_BOOL_SLICE_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -562,13 +562,13 @@ func TestSomeEnv_ToBoolSlice(t *testing.T) {
 func TestSomeEnv_ToStringSlice(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    []string
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_STRING_SLICE_A", []string{"true", "false"}}, []string{"true", "false"}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_STRING_SLICE_B", &Summoner{}}, nil, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_STRING_SLICE_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_STRING_SLICE_A", []string{"true", "false"}}, []string{"true", "false"}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_STRING_SLICE_B", &Summoner{}}, nil, true},
+		{"Test return nil error", &someEnv{"TEST_TO_STRING_SLICE_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -587,13 +587,13 @@ func TestSomeEnv_ToStringSlice(t *testing.T) {
 func TestSomeEnv_ToIntSlice(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    []int
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_INT_SLICE_A", []int{1, 2}}, []int{1, 2}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_INT_SLICE_B", &Summoner{}}, []int{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_INT_SLICE_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_INT_SLICE_A", []int{1, 2}}, []int{1, 2}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_INT_SLICE_B", &Summoner{}}, []int{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_INT_SLICE_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -612,13 +612,13 @@ func TestSomeEnv_ToIntSlice(t *testing.T) {
 func TestSomeEnv_ToDurationSlice(t *testing.T) {
 	tests := []struct {
 		name    string
-		s       *SomeEnv
+		s       *someEnv
 		want    []time.Duration
 		wantErr bool
 	}{
-		{"Test return correctly", &SomeEnv{"TEST_TO_DURATION_SLICE_A", []time.Duration{1 * time.Second, 2 * time.Second}}, []time.Duration{1 * time.Second, 2 * time.Second}, false},
-		{"Test return cast error", &SomeEnv{"TEST_TO_DURATION_SLICE_B", &Summoner{}}, []time.Duration{}, true},
-		{"Test return nil error", &SomeEnv{"TEST_TO_DURATION_SLICE_C", nil}, nil, true},
+		{"Test return correctly", &someEnv{"TEST_TO_DURATION_SLICE_A", []time.Duration{1 * time.Second, 2 * time.Second}}, []time.Duration{1 * time.Second, 2 * time.Second}, false},
+		{"Test return cast error", &someEnv{"TEST_TO_DURATION_SLICE_B", &Summoner{}}, []time.Duration{}, true},
+		{"Test return nil error", &someEnv{"TEST_TO_DURATION_SLICE_C", nil}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

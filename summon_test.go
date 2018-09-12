@@ -79,11 +79,11 @@ func TestSummoner_Get(t *testing.T) {
 		name string
 		s    *Summoner
 		args args
-		want *SomeEnv
+		want *someEnv
 	}{
-		{"Test env's value(TEST) is from local", &Summoner{true}, args{"TEST"}, &SomeEnv{"TEST", 1}},
-		{"Test env's value(TEST) is from OS", &Summoner{false}, args{"TEST"}, &SomeEnv{"TEST", "a"}},
-		{"Test env's value(TEST) is not exist", &Summoner{false}, args{"TEST2"}, &SomeEnv{"TEST2", nil}},
+		{"Test env's value(TEST) is from local", &Summoner{true}, args{"TEST"}, &someEnv{"TEST", 1}},
+		{"Test env's value(TEST) is from OS", &Summoner{false}, args{"TEST"}, &someEnv{"TEST", "a"}},
+		{"Test env's value(TEST) is not exist", &Summoner{false}, args{"TEST2"}, &someEnv{"TEST2", nil}},
 	}
 	for _, tt := range tests {
 		if tt.args.k == "TEST" && tt.s.isEnvLocal {
